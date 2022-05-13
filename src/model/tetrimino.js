@@ -1,7 +1,10 @@
 // prettier-ignore
 const tetrimino = {
   // Rotation states. 
-  // A tetrimino state can be defined as tetrimino[type][rotation] where roation is in range [0 - 3].
+  /** 
+   * A tetrimino state can be defined as tetrimino[type][rotation] where roation is in range [0 - 3].
+   * The type O tetrimino has only one possible state.
+   * */ 
   I: [
       [[1, 0], [1, 1], [1, 2], [1, 3]],
       [[0, 2], [1, 2], [2, 2], [3, 2]],
@@ -60,10 +63,17 @@ const tetrimino = {
     // w3 is for 2->3 and 0->3 rotations.
     w3: [[1, 0], [1, 1], [0, -2], [1, -2]],
     // w4 is for 3->2 and 3->0 rotations.
-    w4: [[-1, 0], [-1, -1], [0, 2], [-1, 2]]
+    w4: [[-1, 0], [-1, -1], [0, 2], [-1, 2]],
 
     // wallkicks for I tetrimino.
-
+    // w5 is for 0->1 and 3->2 rotations.
+    w5: [[-2, 0], [1, 0], [-2, -1], [1, 2]],
+    // w6 is for 1->0 and 2->3 rotations.
+    w6: [[2, 0], [-1, 0], [2, 1], [-1, -2]],
+    // w7 is for 1->2 and 0->3 rotations.
+    w7: [[-1, 0], [2, 0], [-1, 2], [2, -1]],
+    // w8 is for 2->1 and 3->0 rotations.
+    w8: [[1, 0], [-2, 0], [1, -2], [-2, 1]],
   }
 }
 
