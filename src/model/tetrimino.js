@@ -1,5 +1,7 @@
 // prettier-ignore
 const tetrimino = {
+  // Rotation states. 
+  // A tetrimino state can be defined as tetrimino[type][rotation] where roation is in range [0 - 3].
   I: [
       [[1, 0], [1, 1], [1, 2], [1, 3]],
       [[0, 2], [1, 2], [2, 2], [3, 2]],
@@ -43,23 +45,26 @@ const tetrimino = {
 
   types: ['I', 'O', 'T', 'S', 'Z', 'J', 'L'],
 
-  rotateState: (state, type, direction) => {
-    // if type is 'O' immediatly return.
-    if (type === 'O') return state;
+  /**
+   * When the player attempts to rotate a tetromino, 
+   * but the position it would normally occupy after basic rotation is obstructed
+   * we will attempt to "kick" the tetromino into an alternative position nearby using these [x, y] coordinates
+  */
+  wallkicks: {
+    // O tetrimino has no wallkicks.
+    // wallkicks for J, L, T, S, Z  tetrimino.
+    // w1 is for 0->1 and 2->1 rotations.
+    w1: [[-1, 0], [-1, 1], [0, -2], [-1, -2]],
+    // w2 is for 1->0 and 1->2 rotations.
+    w2: [[1, 0], [1, -1], [0, 2], [1, 2]],
+    // w3 is for 2->3 and 0->3 rotations.
+    w3: [[1, 0], [1, 1], [0, -2], [1, -2]],
+    // w4 is for 3->2 and 3->0 rotations.
+    w4: [[-1, 0], [-1, -1], [0, 2], [-1, 2]]
 
-    // Matrix size is 3 for all tetrimino but the 'I" type.
-    // Element index are in range [0 - 2] for all the other types
-    // and in range [0 - 3] for the 'I' type.
-    let len = 2;
-    if (type === 'I') len = 3;
+    // wallkicks for I tetrimino.
 
-    // return new states for left and right rotation and the same state if no direction is specified.
-    if (direction === 'left') {
-      return state.map((elem) => [len - elem[1], elem[0]]);
-    } else if (direction === 'right') {
-      return state.map((elem) => [elem[1], len - elem[0]]);
-    } else return state;
-  },
+  }
 }
 
 export default { tetrimino };

@@ -7,6 +7,7 @@
 |:---|:---|
 |**Playfield**|10×22 Grid, where rows above 20 are hidden.|
 |**SRS**|Super Rotation System / Standard Rotation System that specifies tetrimino rotation.|
+|**WallKicks**| When the player attempts to rotate a tetromino, but the position it would normally occupy after basic rotation is obstructed the game will attempt to "kick" the tetromino into an alternative position nearby. 5 positions are sequentially tested (inclusive of basic rotation); if none are available, the rotation fails completely.
 |**7-bag**|Random piece generator for tetriminos.|
 |**Hold piece**|The player can press a button to send the falling tetrimino to the hold box, and any tetrimino that had been in the hold box moves to the top of the screen and begins falling. Hold cannot be used again until after the piece locks down.|
 |**Sound Effects**|On rotation, movement, landing on surface, touching a wall, locking, line clear and game over.|
